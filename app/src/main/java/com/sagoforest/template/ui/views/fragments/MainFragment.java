@@ -1,4 +1,4 @@
-package com.sagoforest.template.userinterface.views.fragments;
+package com.sagoforest.template.ui.views.fragments;
 
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.sagoforest.template.R;
 import com.sagoforest.template.databinding.FragmentMainBinding;
-import com.sagoforest.template.userinterface.viewmodels.MainViewModel;
+import com.sagoforest.template.ui.viewmodels.MainViewModel;
 
 import javax.inject.Inject;
 

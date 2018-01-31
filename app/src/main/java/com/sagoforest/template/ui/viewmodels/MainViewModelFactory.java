@@ -1,4 +1,4 @@
-package com.sagoforest.template.userinterface.viewmodels;
+package com.sagoforest.template.ui.viewmodels;
 
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;

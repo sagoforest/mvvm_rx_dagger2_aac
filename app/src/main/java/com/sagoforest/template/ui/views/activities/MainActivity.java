@@ -1,4 +1,4 @@
-package com.sagoforest.template.userinterface.views.activities;
+package com.sagoforest.template.ui.views.activities;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

@@ -1,8 +1,8 @@
-package com.sagoforest.template.userinterface.views.fragments;
+package com.sagoforest.template.ui.views.fragments;
 
 import android.arch.lifecycle.ViewModelProvider;
 
-import com.sagoforest.template.userinterface.viewmodels.MainViewModelFactory;
+import com.sagoforest.template.ui.viewmodels.MainViewModelFactory;
 
 import dagger.Binds;
 import dagger.Module;
