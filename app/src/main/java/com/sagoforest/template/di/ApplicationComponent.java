@@ -5,6 +5,7 @@ import com.sagoforest.template.business.TemplateApp;
 import javax.inject.Singleton;
 
 import dagger.Component;
+import dagger.android.AndroidInjectionModule;
 import dagger.android.AndroidInjector;
 
 /**
@@ -12,7 +13,13 @@ import dagger.android.AndroidInjector;
  */
 
 @Singleton
-@Component(modules = {ApplicationModule.class, UseCaseBindingModule.class, ActivityBindingModule.class})
+@Component(modules = {
+        AndroidInjectionModule.class,
+        ApplicationModule.class,
+        BusinessBindingModule.class,
+        ActivityBindingModule.class,
+        ViewModelModule.class
+})
 interface ApplicationComponent extends AndroidInjector<TemplateApp> {
 
     @Component.Builder

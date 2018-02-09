@@ -10,7 +10,7 @@ import dagger.Module;
  * Created by andy on 1/30/18.
  */
 @Module
-public abstract class UseCaseBindingModule {
+public abstract class BusinessBindingModule {
     @Binds
     public abstract IRandomNameUseCase provideRandomNameUseCase(RandomNameUseCase useCase);
 }

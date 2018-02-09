@@ -1,9 +1,7 @@
 package com.sagoforest.template.di;
 
-import com.sagoforest.template.ui.views.activities.MainActivity;
-import com.sagoforest.template.ui.views.fragments.MainFragmentModule;
-
-import javax.inject.Scope;
+import com.sagoforest.template.ui.views.mainview.MainActivity;
+import com.sagoforest.template.ui.views.mainview.MainFragmentModule;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;

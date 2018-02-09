@@ -1,4 +1,4 @@
-package com.sagoforest.template.ui.views.fragments;
+package com.sagoforest.template.ui.views.mainview;
 
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.sagoforest.common.ui.views.FragmentBase;
 import com.sagoforest.template.R;
 import com.sagoforest.template.databinding.FragmentMainBinding;
 import com.sagoforest.template.ui.viewmodels.MainViewModel;
@@ -23,7 +24,7 @@ import dagger.android.support.AndroidSupportInjection;
  * Created by andy on 1/30/18.
  */
 
-public class MainFragment extends Fragment {
+public class MainFragment extends FragmentBase {
 
     @Inject
     ViewModelProvider.Factory factory;
@@ -31,8 +32,7 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // perform the DI
-        AndroidSupportInjection.inject(this);
+        super.onCreateView(inflater, container, savedInstanceState);
 
         // get the fragment binding
         FragmentMainBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false);

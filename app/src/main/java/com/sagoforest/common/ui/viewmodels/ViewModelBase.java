@@ -1,4 +1,4 @@
-package com.sagoforest.template.ui.viewmodels;
+package com.sagoforest.common.ui.viewmodels;
 
 import android.arch.lifecycle.ViewModel;
 
@@ -25,3 +25,4 @@ public class ViewModelBase extends ViewModel {
         super.onCleared();
     }
 }
+
