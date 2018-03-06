@@ -2,10 +2,13 @@ package com.sagoforest.template.ui.viewmodels;
 
 import android.databinding.ObservableField;
 
+import com.sagoforest.common.ui.navigation.INavigationManager;
 import com.sagoforest.common.ui.viewmodels.ViewModelBase;
 import com.sagoforest.template.business.interfaces.usecases.IRandomNameUseCase;
+import com.sagoforest.template.ui.views.mainview.TemplateNavigationPage;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -22,13 +25,15 @@ public class MainViewModel extends ViewModelBase {
 
     private final ObservableField<String> mMessage = new ObservableField<>();
 
+    private INavigationManager mNavigationManager;
     private IRandomNameUseCase mUseCase;
 
     @Inject
-    public MainViewModel(@NonNull IRandomNameUseCase useCase) {
+    public MainViewModel(@NonNull IRandomNameUseCase useCase,
+                         @NonNull @Named("template") INavigationManager navigationManager) {
 
         mUseCase = useCase;
-
+        mNavigationManager = navigationManager;
         // this takes care of cleaning it up
         addSubscription(mUseCase.getName()
                 .subscribeOn(Schedulers.computation())
@@ -47,4 +52,7 @@ public class MainViewModel extends ViewModelBase {
         mUseCase.generateRandomName();
     }
 
+    public void navigateToSecondCommand() {
+        mNavigationManager.navigateToPage(new TemplateNavigationPage(TemplateNavigationPage.SECOND));
+    }
 }

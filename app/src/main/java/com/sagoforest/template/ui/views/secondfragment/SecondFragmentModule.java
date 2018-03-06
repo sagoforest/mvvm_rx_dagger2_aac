@@ -1,4 +1,4 @@
-package com.sagoforest.template.ui.views.mainview;
+package com.sagoforest.template.ui.views.secondfragment;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -9,9 +9,9 @@ import dagger.android.ContributesAndroidInjector;
  * Created by andy on 1/30/18.
  */
 @Module
-public abstract class MainFragmentModule {
+public abstract class SecondFragmentModule {
 
     @ContributesAndroidInjector
-    abstract MainFragment fragment();
+    abstract SecondFragment fragment();
 
 }
