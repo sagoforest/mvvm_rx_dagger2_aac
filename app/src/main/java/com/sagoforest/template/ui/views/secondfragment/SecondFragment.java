@@ -1,10 +1,9 @@
-package com.sagoforest.template.ui.views.mainview;
+package com.sagoforest.template.ui.views.secondfragment;
 
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +11,11 @@ import android.view.ViewGroup;
 import com.sagoforest.common.ui.views.FragmentBase;
 import com.sagoforest.template.R;
 import com.sagoforest.template.databinding.FragmentMainBinding;
+import com.sagoforest.template.databinding.FragmentSecondBinding;
 import com.sagoforest.template.ui.viewmodels.MainViewModel;
+import com.sagoforest.template.ui.viewmodels.SecondViewModel;
 
 import javax.inject.Inject;
-
-import dagger.android.support.AndroidSupportInjection;
 
 /**
  * The main fragment
@@ -24,7 +23,7 @@ import dagger.android.support.AndroidSupportInjection;
  * Created by andy on 1/30/18.
  */
 
-public class MainFragment extends FragmentBase {
+public class SecondFragment extends FragmentBase {
 
     @Inject
     ViewModelProvider.Factory factory;
@@ -35,10 +34,10 @@ public class MainFragment extends FragmentBase {
         super.onCreateView(inflater, container, savedInstanceState);
 
         // get the fragment binding
-        FragmentMainBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false);
+        FragmentSecondBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_second, container, false);
 
         // get the AAC VM using the factory
-        MainViewModel vm = ViewModelProviders.of(this, factory).get(MainViewModel.class);
+        SecondViewModel vm = ViewModelProviders.of(this, factory).get(SecondViewModel.class);
 
         // bind to the context
         binding.setContext(vm);
