@@ -4,6 +4,7 @@ import android.databinding.ObservableField;
 
 import com.sagoforest.common.ui.navigation.INavigationManager;
 import com.sagoforest.common.ui.viewmodels.ViewModelBase;
+import com.sagoforest.template.dataaccess.UsersDatabase;
 import com.sagoforest.template.ui.views.mainview.TemplateNavigationPage;
 
 import javax.inject.Inject;
@@ -20,15 +21,15 @@ import io.reactivex.annotations.NonNull;
 @Singleton
 public class UsersViewModel extends ViewModelBase {
 
-    private final ObservableField<String> mMessage = new ObservableField<>();
-
     private INavigationManager mNavigationManager;
+    private UsersDatabase mUsersDatabase;
 
     @Inject
-    public UsersViewModel(@NonNull @Named("template") INavigationManager navigationManager) {
+    public UsersViewModel(@NonNull @Named("template") INavigationManager navigationManager,
+                          @NonNull UsersDatabase usersDatabase) {
 
         mNavigationManager = navigationManager;
-
+        mUsersDatabase = usersDatabase;
     }
 
 
