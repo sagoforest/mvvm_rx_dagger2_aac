@@ -7,7 +7,7 @@
 
         <variable
             name="context"
-            type="com.sagoforest.template.ui.viewmodels.SecondViewModel" />
+            type="com.sagoforest.template.ui.viewmodels.UsersViewModel" />
     </data>
 
     <LinearLayout
@@ -19,12 +19,13 @@
 
         <Button
             android:id="@+id/nameButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="10sp"
             android:background="@color/colorPrimaryDark"
             android:gravity="center"
-            android:onClick="@{(view)->context.navigateHomeCommand()}"
-            android:text="Navigate Home"
+            android:onClick="@{(view)->context.newUserCommand()}"
+            android:text="New User"
             android:textAllCaps="true"
             android:textColor="@android:color/white"
             android:textSize="30sp"

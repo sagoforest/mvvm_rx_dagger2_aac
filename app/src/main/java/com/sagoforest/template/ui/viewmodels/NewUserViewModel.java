@@ -21,7 +21,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by andy on 1/30/18.
  */
 @Singleton
-public class MainViewModel extends ViewModelBase {
+public class NewUserViewModel extends ViewModelBase {
 
     private final ObservableField<String> mMessage = new ObservableField<>();
 
@@ -29,8 +29,8 @@ public class MainViewModel extends ViewModelBase {
     private IRandomNameUseCase mUseCase;
 
     @Inject
-    public MainViewModel(@NonNull IRandomNameUseCase useCase,
-                         @NonNull @Named("template") INavigationManager navigationManager) {
+    public NewUserViewModel(@NonNull IRandomNameUseCase useCase,
+                            @NonNull @Named("template") INavigationManager navigationManager) {
 
         mUseCase = useCase;
         mNavigationManager = navigationManager;
@@ -47,12 +47,15 @@ public class MainViewModel extends ViewModelBase {
         return mMessage;
     }
 
+    public void addUserCommand() {
+        return;
+    }
 
     public void getNewNameCommand() {
         mUseCase.generateRandomName();
     }
 
-    public void navigateToSecondCommand() {
-        mNavigationManager.navigateToPage(new TemplateNavigationPage(TemplateNavigationPage.SECOND));
+    public void navigateToUsersCommand() {
+        mNavigationManager.navigateToPage(new TemplateNavigationPage(TemplateNavigationPage.USERS));
     }
 }

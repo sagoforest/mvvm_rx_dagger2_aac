@@ -10,8 +10,8 @@ import com.sagoforest.common.ui.navigation.INavigationManager;
 import com.sagoforest.common.ui.navigation.INavigationPage;
 import com.sagoforest.common.ui.views.NavigationControllerBase;
 import com.sagoforest.template.R;
-import com.sagoforest.template.ui.views.mainfragment.MainFragment;
-import com.sagoforest.template.ui.views.secondfragment.SecondFragment;
+import com.sagoforest.template.ui.views.newuser.NewUserFragment;
+import com.sagoforest.template.ui.views.users.UsersFragment;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -44,11 +44,11 @@ public class TemplateNavigationController extends NavigationControllerBase {
     @Override
     protected void switchPage(INavigationPage page) {
         switch (page.getPage()) {
-            case TemplateNavigationPage.MAIN:
-                replaceFragment(new MainFragment(), "mainFragment");
+            case TemplateNavigationPage.NEW_USER:
+                replaceFragment(new NewUserFragment(), "newUserFragment");
                 return;
-            case TemplateNavigationPage.SECOND:
-                replaceFragment(new SecondFragment(), "secondFragment");
+            case TemplateNavigationPage.USERS:
+                replaceFragment(new UsersFragment(), "usersFragment");
             default:
                 Log.e(TAG, "Unknown navigation page");
         }
@@ -74,6 +74,6 @@ public class TemplateNavigationController extends NavigationControllerBase {
      * @return the precice homepage
      */
     private INavigationPage getHomePage() {
-        return new TemplateNavigationPage(TemplateNavigationPage.MAIN);
+        return new TemplateNavigationPage(TemplateNavigationPage.USERS);
     }
 }

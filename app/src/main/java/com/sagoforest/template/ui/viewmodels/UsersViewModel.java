@@ -18,21 +18,21 @@ import io.reactivex.annotations.NonNull;
  * Created by andy on 1/30/18.
  */
 @Singleton
-public class SecondViewModel extends ViewModelBase {
+public class UsersViewModel extends ViewModelBase {
 
     private final ObservableField<String> mMessage = new ObservableField<>();
 
     private INavigationManager mNavigationManager;
 
     @Inject
-    public SecondViewModel(@NonNull @Named("template") INavigationManager navigationManager) {
+    public UsersViewModel(@NonNull @Named("template") INavigationManager navigationManager) {
 
         mNavigationManager = navigationManager;
 
     }
 
 
-    public void navigateHomeCommand() {
-        mNavigationManager.navigateToPage(new TemplateNavigationPage(TemplateNavigationPage.MAIN));
+    public void newUserCommand() {
+        mNavigationManager.navigateToPage(new TemplateNavigationPage(TemplateNavigationPage.NEW_USER));
     }
 }
