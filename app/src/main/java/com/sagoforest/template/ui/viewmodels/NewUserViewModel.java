@@ -13,9 +13,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * A sample view model using AAC
@@ -25,7 +23,8 @@ import io.reactivex.schedulers.Schedulers;
 @Singleton
 public class NewUserViewModel extends ViewModelBase {
 
-    private final ObservableField<String> mMessage = new ObservableField<>();
+    private final ObservableField<String> mFirstName = new ObservableField<>();
+    private final ObservableField<String> mLastName = new ObservableField<>();
 
     private INavigationManager mNavigationManager;
     private IRandomNameUseCase mUseCase;
@@ -39,23 +38,18 @@ public class NewUserViewModel extends ViewModelBase {
         mUseCase = useCase;
         mNavigationManager = navigationManager;
         mUsersRepository = usersRepository;
-
-        // this takes care of cleaning it up
-        addSubscription(mUseCase.getName()
-                .subscribeOn(Schedulers.computation())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(s -> {
-                    mMessage.set(s);
-                }));
-
     }
 
-    public ObservableField<String> getMessage() {
-        return mMessage;
+    public ObservableField<String> getFirstName() {
+        return mFirstName;
+    }
+
+    public ObservableField<String> getLastName() {
+        return mLastName;
     }
 
     public void addUserCommand() {
-        mUsersRepository.addUser(new User("Andrew", "Hanna"));
+        mUsersRepository.addUser(new User(mFirstName.get(), mLastName.get()));
     }
 
     public void getNewNameCommand() {

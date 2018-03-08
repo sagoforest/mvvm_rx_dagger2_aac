@@ -49,6 +49,7 @@ public class TemplateNavigationController extends NavigationControllerBase {
                 return;
             case TemplateNavigationPage.USERS:
                 replaceFragment(new UsersFragment(), "usersFragment");
+                return;
             default:
                 Log.e(TAG, "Unknown navigation page");
         }

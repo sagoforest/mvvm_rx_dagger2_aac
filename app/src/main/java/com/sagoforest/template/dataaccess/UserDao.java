@@ -3,9 +3,12 @@ package com.sagoforest.template.dataaccess;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
 import java.util.List;
+
+import io.reactivex.Flowable;
 
 /**
  * Created by andy on 3/7/18.
@@ -15,7 +18,7 @@ import java.util.List;
 public interface UserDao {
 
     @Query("SELECT * FROM users")
-    List<User> getAll();
+    Flowable<List<User>> getAll();
 
     @Query("SELECT * FROM users WHERE uid IN (:userIds)")
     List<User> loadAllByIds(int[] userIds);
@@ -24,7 +27,7 @@ public interface UserDao {
             + "last_name LIKE :last LIMIT 1")
     User findByName(String first, String last);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(User user);
 
     @Delete
