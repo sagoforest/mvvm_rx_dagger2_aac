@@ -1,7 +1,7 @@
 package com.sagoforest.template.di;
 
-import com.sagoforest.template.business.interfaces.usecases.IRandomNameUseCase;
-import com.sagoforest.template.business.usecases.RandomNameUseCase;
+import com.sagoforest.template.business.interfaces.usecases.IUsersUseCase;
+import com.sagoforest.template.business.usecases.UsersUseCase;
 
 import dagger.Binds;
 import dagger.Module;
@@ -12,5 +12,5 @@ import dagger.Module;
 @Module
 public abstract class BusinessBindingModule {
     @Binds
-    public abstract IRandomNameUseCase provideRandomNameUseCase(RandomNameUseCase useCase);
+    public abstract IUsersUseCase bindUsersUseCase(UsersUseCase useCase);
 }

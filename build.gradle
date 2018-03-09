@@ -17,8 +17,8 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
         jcenter()
+        google()
     }
 }
 
@@ -33,4 +33,5 @@ ext {
     dagger_version='2.14.1'
     guava_version = '18.0'
     aac_version = '1.1.0'
+    room_version = '1.0.0'
 }

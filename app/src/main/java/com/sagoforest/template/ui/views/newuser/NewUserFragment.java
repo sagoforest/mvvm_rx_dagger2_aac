@@ -1,22 +1,19 @@
-package com.sagoforest.template.ui.views.mainfragment;
+package com.sagoforest.template.ui.views.newuser;
 
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.sagoforest.common.ui.views.FragmentBase;
 import com.sagoforest.template.R;
-import com.sagoforest.template.databinding.FragmentMainBinding;
-import com.sagoforest.template.ui.viewmodels.MainViewModel;
+import com.sagoforest.template.databinding.FragmentNewUserBinding;
+import com.sagoforest.template.ui.viewmodels.NewUserViewModel;
 
 import javax.inject.Inject;
-
-import dagger.android.support.AndroidSupportInjection;
 
 /**
  * The main fragment
@@ -24,7 +21,7 @@ import dagger.android.support.AndroidSupportInjection;
  * Created by andy on 1/30/18.
  */
 
-public class MainFragment extends FragmentBase {
+public class NewUserFragment extends FragmentBase {
 
     @Inject
     ViewModelProvider.Factory factory;
@@ -35,10 +32,10 @@ public class MainFragment extends FragmentBase {
         super.onCreateView(inflater, container, savedInstanceState);
 
         // get the fragment binding
-        FragmentMainBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false);
+        FragmentNewUserBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_new_user, container, false);
 
         // get the AAC VM using the factory
-        MainViewModel vm = ViewModelProviders.of(this, factory).get(MainViewModel.class);
+        NewUserViewModel vm = ViewModelProviders.of(this, factory).get(NewUserViewModel.class);
 
         // bind to the context
         binding.setContext(vm);

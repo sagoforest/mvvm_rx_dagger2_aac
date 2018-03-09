@@ -2,8 +2,8 @@ package com.sagoforest.template.ui.views.mainview;
 
 import android.app.Activity;
 
-import com.sagoforest.template.ui.views.mainfragment.MainFragmentModule;
-import com.sagoforest.template.ui.views.secondfragment.SecondFragmentModule;
+import com.sagoforest.template.ui.views.newuser.NewUserFragmentModule;
+import com.sagoforest.template.ui.views.users.UsersFragmentModule;
 
 import dagger.Binds;
 import dagger.Module;
@@ -13,8 +13,8 @@ import dagger.Module;
  */
 
 @Module(includes = {
-        MainFragmentModule.class,
-        SecondFragmentModule.class
+        NewUserFragmentModule.class,
+        UsersFragmentModule.class
 })
 public abstract class MainActivityModule {
 

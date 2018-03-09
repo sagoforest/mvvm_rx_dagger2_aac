@@ -19,8 +19,8 @@ public class TemplateNavigationPage implements INavigationPage {
     private static final String NAME = TemplateNavigationPage.class.getSimpleName();
 
     // Declare the constants
-    public static final int MAIN = 0;
-    public static final int SECOND = 1;
+    public static final int NEW_USER = 0;
+    public static final int USERS = 1;
     private final int mPage;
 
     // Mark the argument as restricted to these enumerated types
@@ -41,7 +41,7 @@ public class TemplateNavigationPage implements INavigationPage {
     // Describes when the annotation will be discarded
     @Retention(RetentionPolicy.SOURCE)
     // Enumerate valid values for this interface
-    @IntDef({MAIN, SECOND})
+    @IntDef({NEW_USER, USERS})
     // Create an interface for validating int types
     public @interface PrecicePage {
     }
