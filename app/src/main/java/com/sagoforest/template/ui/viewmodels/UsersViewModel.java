@@ -6,8 +6,8 @@ import android.arch.lifecycle.LiveDataReactiveStreams;
 import com.sagoforest.common.ui.navigation.INavigationManager;
 import com.sagoforest.common.ui.rx.SchedulerFacade;
 import com.sagoforest.common.ui.viewmodels.ViewModelBase;
+import com.sagoforest.template.business.interfaces.usecases.IUsersUseCase;
 import com.sagoforest.template.dataaccess.entities.User;
-import com.sagoforest.template.dataaccess.interfaces.repositories.IUserRepository;
 import com.sagoforest.template.ui.views.mainview.TemplateNavigationPage;
 
 import java.util.List;
@@ -26,19 +26,19 @@ import io.reactivex.annotations.NonNull;
 public class UsersViewModel extends ViewModelBase {
 
     private INavigationManager mNavigationManager;
-    private IUserRepository mRepository;
+    private IUsersUseCase mUseCase;
 
     private LiveData<List<User>> mUsersLiveData;
 
     @Inject
     public UsersViewModel(@NonNull INavigationManager navigationManager,
-                          @NonNull IUserRepository repository) {
+                          @NonNull IUsersUseCase useCase) {
 
         mNavigationManager = navigationManager;
-        mRepository = repository;
+        mUseCase = useCase;
 
         // create the live stream from the flowable
-        mUsersLiveData = LiveDataReactiveStreams.fromPublisher(mRepository.getAll()
+        mUsersLiveData = LiveDataReactiveStreams.fromPublisher(mUseCase.getUsers()
                 .subscribeOn(SchedulerFacade.io())
                 .observeOn(SchedulerFacade.ui()));
     }
@@ -52,6 +52,6 @@ public class UsersViewModel extends ViewModelBase {
     }
 
     public void clearUsersCommand() {
-        mRepository.removeAll();
+        mUseCase.clearAll();
     }
 }

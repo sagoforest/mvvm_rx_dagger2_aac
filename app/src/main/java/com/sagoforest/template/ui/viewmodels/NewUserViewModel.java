@@ -5,6 +5,7 @@ import android.databinding.ObservableField;
 import com.sagoforest.common.dataaccess.repositories.interfaces.IRepository;
 import com.sagoforest.common.ui.navigation.INavigationManager;
 import com.sagoforest.common.ui.viewmodels.ViewModelBase;
+import com.sagoforest.template.business.interfaces.usecases.IUsersUseCase;
 import com.sagoforest.template.dataaccess.entities.User;
 import com.sagoforest.template.dataaccess.interfaces.repositories.IUserRepository;
 import com.sagoforest.template.ui.views.mainview.TemplateNavigationPage;
@@ -26,14 +27,14 @@ public class NewUserViewModel extends ViewModelBase {
     private final ObservableField<String> mLastName = new ObservableField<>();
 
     private INavigationManager mNavigationManager;
-    private IUserRepository mRepository;
+    private IUsersUseCase mUseCase;
 
     @Inject
     public NewUserViewModel(@NonNull INavigationManager navigationManager,
-                            @NonNull IUserRepository repository) {
+                            @NonNull IUsersUseCase useCase) {
 
         mNavigationManager = navigationManager;
-        mRepository = repository;
+        mUseCase = useCase;
     }
 
     public ObservableField<String> getFirstName() {
@@ -45,7 +46,7 @@ public class NewUserViewModel extends ViewModelBase {
     }
 
     public void addUserCommand() {
-        mRepository.add(new User(mFirstName.get(), mLastName.get()));
+        mUseCase.addNew(mFirstName.get(), mLastName.get());
         navigateToUsersCommand();
         resetData();
     }
