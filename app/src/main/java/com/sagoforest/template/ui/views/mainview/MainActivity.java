@@ -15,6 +15,7 @@ public class MainActivity extends ActivityBase {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         getLifecycle().addObserver(navigationController);
         setContentView(R.layout.activity_main);
     }

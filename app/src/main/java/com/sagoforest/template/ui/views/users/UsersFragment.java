@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,15 @@ public class UsersFragment extends FragmentBase {
 
         // get the AAC VM using the factory
         UsersViewModel vm = ViewModelProviders.of(this, factory).get(UsersViewModel.class);
+
+
+        UsersAdapter adapter = new UsersAdapter(new java.util.ArrayList<>());
+
+
+        binding.usersRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        binding.usersRecyclerView.setAdapter(adapter);
+
+        vm.getUsersLiveData().observe(this, adapter::setUsers);
 
         // bind to the context
         binding.setContext(vm);

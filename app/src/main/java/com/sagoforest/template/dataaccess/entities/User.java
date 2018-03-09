@@ -1,4 +1,4 @@
-package com.sagoforest.template.dataaccess;
+package com.sagoforest.template.dataaccess.entities;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
@@ -19,12 +19,13 @@ public class User {
     @ColumnInfo(name = "last_name")
     public String lastName;
 
-    // Getters and setters are ignored for brevity,
-    // but they're required for Room to work.
-
-    public User(String firstName, String lastName){
+    public User(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
+    @Override
+    public String toString() {
+        return firstName + " " + lastName;
+    }
 }

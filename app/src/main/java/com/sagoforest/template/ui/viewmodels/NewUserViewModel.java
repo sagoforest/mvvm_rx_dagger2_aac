@@ -2,15 +2,14 @@ package com.sagoforest.template.ui.viewmodels;
 
 import android.databinding.ObservableField;
 
+import com.sagoforest.common.dataaccess.repositories.interfaces.IRepository;
 import com.sagoforest.common.ui.navigation.INavigationManager;
 import com.sagoforest.common.ui.viewmodels.ViewModelBase;
-import com.sagoforest.template.business.interfaces.usecases.IRandomNameUseCase;
-import com.sagoforest.template.dataaccess.User;
-import com.sagoforest.template.dataaccess.repository.UserRepository;
+import com.sagoforest.template.dataaccess.entities.User;
+import com.sagoforest.template.dataaccess.interfaces.repositories.IUserRepository;
 import com.sagoforest.template.ui.views.mainview.TemplateNavigationPage;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 import javax.inject.Singleton;
 
 import io.reactivex.annotations.NonNull;
@@ -27,17 +26,14 @@ public class NewUserViewModel extends ViewModelBase {
     private final ObservableField<String> mLastName = new ObservableField<>();
 
     private INavigationManager mNavigationManager;
-    private IRandomNameUseCase mUseCase;
-    private UserRepository mUsersRepository;
+    private IUserRepository mRepository;
 
     @Inject
-    public NewUserViewModel(@NonNull IRandomNameUseCase useCase,
-                            @NonNull @Named("template") INavigationManager navigationManager,
-                            @NonNull UserRepository usersRepository) {
+    public NewUserViewModel(@NonNull INavigationManager navigationManager,
+                            @NonNull IUserRepository repository) {
 
-        mUseCase = useCase;
         mNavigationManager = navigationManager;
-        mUsersRepository = usersRepository;
+        mRepository = repository;
     }
 
     public ObservableField<String> getFirstName() {
@@ -49,14 +45,17 @@ public class NewUserViewModel extends ViewModelBase {
     }
 
     public void addUserCommand() {
-        mUsersRepository.addUser(new User(mFirstName.get(), mLastName.get()));
-    }
-
-    public void getNewNameCommand() {
-        mUseCase.generateRandomName();
+        mRepository.add(new User(mFirstName.get(), mLastName.get()));
+        navigateToUsersCommand();
+        resetData();
     }
 
     public void navigateToUsersCommand() {
         mNavigationManager.navigateToPage(new TemplateNavigationPage(TemplateNavigationPage.USERS));
+    }
+
+    private void resetData() {
+        mFirstName.set("");
+        mLastName.set("");
     }
 }

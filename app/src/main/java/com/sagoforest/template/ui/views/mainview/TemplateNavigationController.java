@@ -29,7 +29,7 @@ public class TemplateNavigationController extends NavigationControllerBase {
 
     @Inject
     public TemplateNavigationController(@NonNull MainActivity activity,
-                                        @NonNull @Named("template") INavigationManager navigationManager) {
+                                        @NonNull INavigationManager navigationManager) {
         super(navigationManager);
         mFragmentManager = activity.getSupportFragmentManager();
         mContainerId = R.id.template_container;

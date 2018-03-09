@@ -17,7 +17,6 @@ import dagger.android.AndroidInjector;
         AndroidInjectionModule.class,
         ApplicationModule.class,
         BusinessBindingModule.class,
-        DataAccessModule.class,
         ActivityBindingModule.class,
         ViewModelModule.class
 })

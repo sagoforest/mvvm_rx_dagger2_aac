@@ -1,16 +1,18 @@
 package com.sagoforest.template.ui.viewmodels;
 
-import android.util.Log;
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.LiveDataReactiveStreams;
 
 import com.sagoforest.common.ui.navigation.INavigationManager;
 import com.sagoforest.common.ui.rx.SchedulerFacade;
 import com.sagoforest.common.ui.viewmodels.ViewModelBase;
-import com.sagoforest.template.dataaccess.User;
-import com.sagoforest.template.dataaccess.repository.UserRepository;
+import com.sagoforest.template.dataaccess.entities.User;
+import com.sagoforest.template.dataaccess.interfaces.repositories.IUserRepository;
 import com.sagoforest.template.ui.views.mainview.TemplateNavigationPage;
 
+import java.util.List;
+
 import javax.inject.Inject;
-import javax.inject.Named;
 import javax.inject.Singleton;
 
 import io.reactivex.annotations.NonNull;
@@ -24,27 +26,32 @@ import io.reactivex.annotations.NonNull;
 public class UsersViewModel extends ViewModelBase {
 
     private INavigationManager mNavigationManager;
-    private UserRepository mRepository;
+    private IUserRepository mRepository;
+
+    private LiveData<List<User>> mUsersLiveData;
 
     @Inject
-    public UsersViewModel(@NonNull @Named("template") INavigationManager navigationManager,
-                          @NonNull UserRepository repository) {
+    public UsersViewModel(@NonNull INavigationManager navigationManager,
+                          @NonNull IUserRepository repository) {
 
         mNavigationManager = navigationManager;
         mRepository = repository;
 
-        addSubscription(mRepository.getUsers()
+        // create the live stream from the flowable
+        mUsersLiveData = LiveDataReactiveStreams.fromPublisher(mRepository.getAll()
                 .subscribeOn(SchedulerFacade.io())
-                .observeOn(SchedulerFacade.ui())
-                .subscribe(users -> {
-                    for (User user : users) {
-                        Log.d("hi", user.firstName + ' ' + user.lastName);
-                    }
-                }));
+                .observeOn(SchedulerFacade.ui()));
+    }
 
+    public LiveData<List<User>> getUsersLiveData() {
+        return mUsersLiveData;
     }
 
     public void newUserCommand() {
         mNavigationManager.navigateToPage(new TemplateNavigationPage(TemplateNavigationPage.NEW_USER));
+    }
+
+    public void clearUsersCommand() {
+        mRepository.removeAll();
     }
 }

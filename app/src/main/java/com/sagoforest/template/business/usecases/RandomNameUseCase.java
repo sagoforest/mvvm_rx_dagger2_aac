@@ -4,7 +4,7 @@ package com.sagoforest.template.business.usecases;
 import android.support.annotation.NonNull;
 
 import com.sagoforest.template.business.interfaces.usecases.IRandomNameUseCase;
-import com.sagoforest.template.dataaccess.UsersDatabase;
+import com.sagoforest.template.dataaccess.databases.TemplateDatabase;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -22,11 +22,11 @@ import io.reactivex.subjects.PublishSubject;
 public class RandomNameUseCase implements IRandomNameUseCase {
 
     private final PublishSubject<String> mRandomName = PublishSubject.create();
-    private UsersDatabase mUsersDatabase;
+    private TemplateDatabase mTemplateDatabase;
 
     @Inject
-    public RandomNameUseCase(@NonNull UsersDatabase usersDatabase) {
-        mUsersDatabase = usersDatabase;
+    public RandomNameUseCase(@NonNull TemplateDatabase templateDatabase) {
+        mTemplateDatabase = templateDatabase;
     }
 
     public void generateRandomName() {
