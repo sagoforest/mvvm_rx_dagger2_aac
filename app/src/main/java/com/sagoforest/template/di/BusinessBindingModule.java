@@ -12,5 +12,5 @@ import dagger.Module;
 @Module
 public abstract class BusinessBindingModule {
     @Binds
-    public abstract IUsersUseCase provideRandomNameUseCase(UsersUseCase useCase);
+    public abstract IUsersUseCase bindUsersUseCase(UsersUseCase useCase);
 }
