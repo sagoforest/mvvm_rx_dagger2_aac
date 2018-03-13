@@ -1,11 +1,11 @@
-package com.sagoforest.template.dataaccess.repositories;
+package com.sagoforest.template.da.repositories;
 
 import android.support.annotation.NonNull;
 
 import com.sagoforest.common.ui.rx.SchedulerFacade;
-import com.sagoforest.template.dataaccess.databases.TemplateDatabase;
-import com.sagoforest.template.dataaccess.entities.User;
-import com.sagoforest.template.dataaccess.interfaces.repositories.IUserRepository;
+import com.sagoforest.template.da.databases.TemplateDatabase;
+import com.sagoforest.template.da.entities.User;
+import com.sagoforest.template.da.interfaces.repositories.IUserRepository;
 
 import java.util.List;
 

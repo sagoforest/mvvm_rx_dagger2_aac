@@ -2,12 +2,9 @@ package com.sagoforest.template.ui.viewmodels;
 
 import android.databinding.ObservableField;
 
-import com.sagoforest.common.dataaccess.repositories.interfaces.IRepository;
 import com.sagoforest.common.ui.navigation.INavigationManager;
 import com.sagoforest.common.ui.viewmodels.ViewModelBase;
 import com.sagoforest.template.business.interfaces.usecases.IUsersUseCase;
-import com.sagoforest.template.dataaccess.entities.User;
-import com.sagoforest.template.dataaccess.interfaces.repositories.IUserRepository;
 import com.sagoforest.template.ui.views.mainview.TemplateNavigationPage;
 
 import javax.inject.Inject;

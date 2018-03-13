@@ -3,12 +3,10 @@ package com.sagoforest.template.di;
 import android.app.Application;
 import android.arch.persistence.room.Room;
 
-import com.sagoforest.common.dataaccess.repositories.interfaces.IRepository;
 import com.sagoforest.template.business.TemplateApp;
-import com.sagoforest.template.dataaccess.databases.TemplateDatabase;
-import com.sagoforest.template.dataaccess.entities.User;
-import com.sagoforest.template.dataaccess.interfaces.repositories.IUserRepository;
-import com.sagoforest.template.dataaccess.repositories.UserRoomRepository;
+import com.sagoforest.template.da.databases.TemplateDatabase;
+import com.sagoforest.template.da.interfaces.repositories.IUserRepository;
+import com.sagoforest.template.da.repositories.UserRoomRepository;
 
 import javax.inject.Singleton;
 

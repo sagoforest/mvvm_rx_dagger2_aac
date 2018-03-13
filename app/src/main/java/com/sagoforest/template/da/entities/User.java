@@ -1,4 +1,4 @@
-package com.sagoforest.template.dataaccess.entities;
+package com.sagoforest.template.da.entities;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;

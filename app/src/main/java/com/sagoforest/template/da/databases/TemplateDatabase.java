@@ -1,10 +1,10 @@
-package com.sagoforest.template.dataaccess.databases;
+package com.sagoforest.template.da.databases;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
 
-import com.sagoforest.template.dataaccess.entities.User;
-import com.sagoforest.template.dataaccess.interfaces.dao.UserDao;
+import com.sagoforest.template.da.entities.User;
+import com.sagoforest.template.da.interfaces.dao.UserDao;
 
 /**
  * Created by andy on 3/7/18.

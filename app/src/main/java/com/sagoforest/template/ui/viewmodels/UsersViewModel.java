@@ -7,7 +7,7 @@ import com.sagoforest.common.ui.navigation.INavigationManager;
 import com.sagoforest.common.ui.rx.SchedulerFacade;
 import com.sagoforest.common.ui.viewmodels.ViewModelBase;
 import com.sagoforest.template.business.interfaces.usecases.IUsersUseCase;
-import com.sagoforest.template.dataaccess.entities.User;
+import com.sagoforest.template.da.entities.User;
 import com.sagoforest.template.ui.views.mainview.TemplateNavigationPage;
 
 import java.util.List;

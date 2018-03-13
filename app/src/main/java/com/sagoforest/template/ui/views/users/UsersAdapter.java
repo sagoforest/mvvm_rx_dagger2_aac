@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.sagoforest.template.dataaccess.entities.User;
+import com.sagoforest.template.da.entities.User;
 import com.sagoforest.template.databinding.UserItemBinding;
 
 import java.util.List;

@@ -4,8 +4,8 @@ package com.sagoforest.template.business.usecases;
 import android.support.annotation.NonNull;
 
 import com.sagoforest.template.business.interfaces.usecases.IUsersUseCase;
-import com.sagoforest.template.dataaccess.entities.User;
-import com.sagoforest.template.dataaccess.interfaces.repositories.IUserRepository;
+import com.sagoforest.template.da.entities.User;
+import com.sagoforest.template.da.interfaces.repositories.IUserRepository;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import javax.inject.Singleton;
 import io.reactivex.Flowable;
 
 /**
- * Concrete implementation of the random name use case
+ * Use case than manages users
  * <p>
  * Created by andy on 1/30/18.
  */

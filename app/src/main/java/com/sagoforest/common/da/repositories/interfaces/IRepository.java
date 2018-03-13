@@ -1,4 +1,4 @@
-package com.sagoforest.common.dataaccess.repositories.interfaces;
+package com.sagoforest.common.da.repositories.interfaces;
 
 import java.util.List;
 
