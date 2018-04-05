@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import io.reactivex.annotations.NonNull;
+import lombok.Getter;
 
 /**
  * A sample view model using AAC
@@ -20,7 +21,9 @@ import io.reactivex.annotations.NonNull;
 @Singleton
 public class NewUserViewModel extends ViewModelBase {
 
+    @Getter
     private final ObservableField<String> mFirstName = new ObservableField<>();
+    @Getter
     private final ObservableField<String> mLastName = new ObservableField<>();
 
     private INavigationManager mNavigationManager;
@@ -32,14 +35,6 @@ public class NewUserViewModel extends ViewModelBase {
 
         mNavigationManager = navigationManager;
         mUseCase = useCase;
-    }
-
-    public ObservableField<String> getFirstName() {
-        return mFirstName;
-    }
-
-    public ObservableField<String> getLastName() {
-        return mLastName;
     }
 
     public void addUserCommand() {

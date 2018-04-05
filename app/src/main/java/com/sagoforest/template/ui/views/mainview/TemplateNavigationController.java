@@ -1,7 +1,6 @@
 package com.sagoforest.template.ui.views.mainview;
 
 
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
@@ -14,7 +13,8 @@ import com.sagoforest.template.ui.views.newuser.NewUserFragment;
 import com.sagoforest.template.ui.views.users.UsersFragment;
 
 import javax.inject.Inject;
-import javax.inject.Named;
+
+import lombok.NonNull;
 
 /**
  * The navigation controller for Precice

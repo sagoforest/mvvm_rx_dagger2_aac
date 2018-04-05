@@ -4,28 +4,33 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
+import lombok.Data;
+import lombok.NonNull;
+
 /**
  * Created by andy on 3/7/18.
  */
 
+@Data
 @Entity(tableName = "users")
 public class User {
     @PrimaryKey(autoGenerate = true)
-    public int uid;
+    @ColumnInfo(name = "uid")
+    private int mId;
 
     @ColumnInfo(name = "first_name")
-    public String firstName;
+    private String mFirstName;
 
     @ColumnInfo(name = "last_name")
-    public String lastName;
+    private String mLastName;
 
-    public User(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public User(@NonNull String firstName, @NonNull String lastName) {
+        mFirstName = firstName;
+        mLastName = lastName;
     }
 
     @Override
     public String toString() {
-        return firstName + " " + lastName;
+        return getFirstName() + " " + getLastName();
     }
 }

@@ -1,18 +1,18 @@
 package com.sagoforest.template.da.repositories;
 
-import android.support.annotation.NonNull;
-
 import com.sagoforest.common.ui.rx.SchedulerFacade;
 import com.sagoforest.template.da.databases.TemplateDatabase;
 import com.sagoforest.template.da.entities.User;
+import com.sagoforest.template.da.interfaces.dao.UserDao;
 import com.sagoforest.template.da.interfaces.repositories.IUserRepository;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.Completable;
 import io.reactivex.Flowable;
-import io.reactivex.Observable;
+import lombok.NonNull;
 
 /**
  * Created by andy on 3/7/18.
@@ -21,16 +21,16 @@ import io.reactivex.Observable;
 public class UserRoomRepository implements IUserRepository {
 
 
-    private TemplateDatabase mDatabase;
+    private UserDao mUserDao;
 
     @Inject
     public UserRoomRepository(@NonNull TemplateDatabase database) {
-        mDatabase = database;
+        mUserDao = database.userDao();
     }
 
     @Override
     public Flowable<List<User>> getAll() {
-        return mDatabase.userDao().getAll();
+        return mUserDao.getAll();
     }
 
     @Override
@@ -39,26 +39,24 @@ public class UserRoomRepository implements IUserRepository {
     }
 
     @Override
-    public void add(User item) {
-        Observable.just(mDatabase)
-                .subscribeOn(SchedulerFacade.io())
-                .subscribe(usersDatabase -> usersDatabase.userDao().insert(item));
+    public Completable add(User item) {
+        return Completable.fromAction(() -> mUserDao.insert(item))
+                .subscribeOn(SchedulerFacade.io());
     }
 
     @Override
-    public void update(User item) {
-
+    public Completable update(User item) {
+        throw new UnsupportedOperationException();
     }
 
     @Override
-    public void remove(int id) {
-
+    public Completable remove(int id) {
+        throw new UnsupportedOperationException();
     }
 
     @Override
-    public void removeAll() {
-        Observable.just(mDatabase)
-                .subscribeOn(SchedulerFacade.io())
-                .subscribe(usersDatabase -> usersDatabase.userDao().removeAll());
+    public Completable removeAll() {
+        return Completable.fromAction(() -> mUserDao.removeAll())
+                .subscribeOn(SchedulerFacade.io());
     }
 }

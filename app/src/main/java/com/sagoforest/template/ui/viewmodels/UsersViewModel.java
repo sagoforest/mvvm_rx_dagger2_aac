@@ -16,6 +16,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import io.reactivex.annotations.NonNull;
+import lombok.Getter;
 
 /**
  * A sample view model using AAC
@@ -28,6 +29,7 @@ public class UsersViewModel extends ViewModelBase {
     private INavigationManager mNavigationManager;
     private IUsersUseCase mUseCase;
 
+    @Getter
     private LiveData<List<User>> mUsersLiveData;
 
     @Inject
@@ -41,10 +43,6 @@ public class UsersViewModel extends ViewModelBase {
         mUsersLiveData = LiveDataReactiveStreams.fromPublisher(mUseCase.getUsers()
                 .subscribeOn(SchedulerFacade.io())
                 .observeOn(SchedulerFacade.ui()));
-    }
-
-    public LiveData<List<User>> getUsersLiveData() {
-        return mUsersLiveData;
     }
 
     public void newUserCommand() {

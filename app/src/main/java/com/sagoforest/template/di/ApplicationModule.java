@@ -33,7 +33,9 @@ public abstract class ApplicationModule {
     @Provides
     @Singleton
     static TemplateDatabase providesRoomDatabase(Application application) {
-        return Room.databaseBuilder(application, TemplateDatabase.class, DATABASE_FILENAME).build();
+        return Room.databaseBuilder(application, TemplateDatabase.class, DATABASE_FILENAME)
+                .fallbackToDestructiveMigration()
+                .build();
     }
 
     @Binds

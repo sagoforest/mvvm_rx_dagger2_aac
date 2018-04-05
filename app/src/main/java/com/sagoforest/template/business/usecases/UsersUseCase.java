@@ -1,8 +1,6 @@
 package com.sagoforest.template.business.usecases;
 
 
-import android.support.annotation.NonNull;
-
 import com.sagoforest.template.business.interfaces.usecases.IUsersUseCase;
 import com.sagoforest.template.da.entities.User;
 import com.sagoforest.template.da.interfaces.repositories.IUserRepository;
@@ -13,6 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import io.reactivex.Flowable;
+import lombok.NonNull;
 
 /**
  * Use case than manages users
@@ -39,7 +38,11 @@ public class UsersUseCase implements IUsersUseCase {
 
     @Override
     public void addNew(String firstName, String lastName) {
-        mRepository.add(new User(firstName, lastName));
+        mRepository.add(new User(firstName, lastName)).subscribe(() -> {
+            // on success
+        }, throwable -> {
+            // on error
+        });
     }
 
     @Override

@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
+    buildToolsVersion '27.0.3'
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.sagoforest.template"
@@ -29,6 +30,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    // Lombok
+    compileOnly "org.projectlombok:lombok:$project.lombok_version"
+    annotationProcessor "org.projectlombok:lombok:$project.lombok_version"
 
     // RxAndroid & RxJava
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroid_version"

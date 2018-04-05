@@ -3,13 +3,13 @@ package com.sagoforest.common.ui.views;
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.OnLifecycleEvent;
-import android.support.annotation.NonNull;
 
 import com.sagoforest.common.ui.navigation.INavigationManager;
 import com.sagoforest.common.ui.navigation.INavigationPage;
 import com.sagoforest.common.ui.rx.SchedulerFacade;
 
 import io.reactivex.disposables.CompositeDisposable;
+import lombok.NonNull;
 
 
 /**

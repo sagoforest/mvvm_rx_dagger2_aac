@@ -2,6 +2,7 @@ package com.sagoforest.common.da.repositories.interfaces;
 
 import java.util.List;
 
+import io.reactivex.Completable;
 import io.reactivex.Flowable;
 
 /**
@@ -13,10 +14,10 @@ public interface IRepository<T> {
 
     Flowable<T> getItem(int id);
 
-    void add(T item);
+    Completable add(T item);
 
-    void update(T item);
+    Completable update(T item);
 
-    void remove(int id);
+    Completable remove(int id);
 
 }
