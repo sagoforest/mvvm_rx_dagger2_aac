@@ -1,6 +1,8 @@
 package com.sagoforest.template.business.usecases;
 
 
+import android.util.Log;
+
 import com.sagoforest.template.business.interfaces.usecases.IUsersUseCase;
 import com.sagoforest.template.da.entities.User;
 import com.sagoforest.template.da.interfaces.repositories.IUserRepository;
@@ -21,8 +23,7 @@ import lombok.NonNull;
 
 @Singleton
 public class UsersUseCase implements IUsersUseCase {
-
-
+    private static final String TAG = UsersUseCase.class.getSimpleName();
     private IUserRepository mRepository;
 
     @Inject
@@ -38,11 +39,12 @@ public class UsersUseCase implements IUsersUseCase {
 
     @Override
     public void addNew(String firstName, String lastName) {
-        mRepository.add(new User(firstName, lastName)).subscribe(() -> {
-            // on success
-        }, throwable -> {
-            // on error
-        });
+        mRepository.add(new User(firstName, lastName))
+                .subscribe(() -> {
+                    Log.d(TAG, "added user");
+                }, throwable -> {
+                    Log.d(TAG, "failed to add user");
+                });
     }
 
     @Override
