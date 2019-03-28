@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.sagoforest.common.ui.views.FragmentBase;
 import com.sagoforest.template.R;
 import com.sagoforest.template.databinding.FragmentUsersBinding;
+import com.sagoforest.template.ui.adapters.UsersAdapter;
 import com.sagoforest.template.ui.viewmodels.UsersViewModel;
 
 import javax.inject.Inject;
